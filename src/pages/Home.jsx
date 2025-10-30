@@ -30,19 +30,19 @@ export default function Home() {
       name: "Festo",
       color: "bg-[#95c11f]",
       route: "/festo",
-      image: "/images/festo.png",
+      image: "/images/Festo_logo.svg",
     },
     {
       name: "24Flow",
       color: "bg-[#305984]",
       route: "/24flow",
-      image: "/images/24flow.png",
+      image: "/images/24Flowlogo.png",
     },
     {
       name: "Innoptus",
       color: "bg-[#95c11f]",
       route: "/innoptus",
-      image: "/images/innoptus.png",
+      image: "/images/innoptus-logo.jpeg",
     },
   ];
 

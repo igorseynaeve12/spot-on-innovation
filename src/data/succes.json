@@ -1,0 +1,52 @@
+{
+  "successStories": [
+    {
+      "id": 1,
+      "title": "Lancering van EcoShop",
+      "description": "EcoShop werd gelanceerd als duurzaam online platform, wat resulteerde in 20.000 nieuwe klanten in 3 maanden.",
+      "client": "EcoShop",
+      "status": "Afgerond",
+      "image": "https://via.placeholder.com/400x250?text=EcoShop"
+    },
+    {
+      "id": 2,
+      "title": "AI Chatbot Implementatie",
+      "description": "De AI-chatbot reduceerde klantenservice-verzoeken met 35%, waardoor het supportteam efficiënter kon werken.",
+      "client": "SmartSupport",
+      "status": "Afgerond",
+      "image": "https://via.placeholder.com/400x250?text=SmartSupport"
+    },
+    {
+      "id": 3,
+      "title": "Internationaal Marketingproject",
+      "description": "Strategische campagne in 5 landen leidde tot een omzetstijging van 50% voor GreenLife Products.",
+      "client": "GreenLife Products",
+      "status": "Afgerond",
+      "image": "https://via.placeholder.com/400x250?text=GreenLife"
+    },
+    {
+      "id": 4,
+      "title": "Virtual Reality Training",
+      "description": "VR-training voor nieuwe medewerkers verkortte onboarding van 4 weken naar 2 weken bij TechCorp.",
+      "client": "TechCorp",
+      "status": "In uitvoering",
+      "image": "https://via.placeholder.com/400x250?text=TechCorp"
+    },
+    {
+      "id": 5,
+      "title": "SaaS Product Integratie",
+      "description": "Integratie van SaaS-tool verhoogde productiviteit van marketingteam met 40% bij BrightIdeas.",
+      "client": "BrightIdeas",
+      "status": "Afgerond",
+      "image": "https://via.placeholder.com/400x250?text=BrightIdeas"
+    },
+    {
+      "id": 6,
+      "title": "Social Media Awareness Campagne",
+      "description": "Social media campagne genereerde 1,2 miljoen impressies en 25.000 nieuwe volgers voor UrbanStyle.",
+      "client": "UrbanStyle",
+      "status": "Afgerond",
+      "image": "https://via.placeholder.com/400x250?text=UrbanStyle"
+    }
+  ]
+}

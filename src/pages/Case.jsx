@@ -1,90 +1,93 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import SideBar from "../components/SideBar";
+import casesData from "../data/cases.json";
 
 export default function Case() {
-  const cases = [
-    {
-      id: 1,
-      name: "Website Redesign",
-      description:
-        "Volledige redesign van de bedrijfswebsite voor betere UX en conversie.",
-      client: "Acme Corp",
-      status: "Afgerond",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      name: "Mobile App Development",
-      description:
-        "Ontwikkeling van een cross-platform mobiele applicatie voor interne workflow.",
-      client: "Tech Solutions",
-      status: "In uitvoering",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 3,
-      name: "Marketing Campagne 2025",
-      description:
-        "Strategische marketingcampagne om merkbekendheid te vergroten.",
-      client: "Green Energy",
-      status: "Afgerond",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 4,
-      name: "Data Analytics Dashboard",
-      description: "Dashboard voor realtime data-analyse en KPI monitoring.",
-      client: "Finance Inc",
-      status: "In uitvoering",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 5,
-      name: "Employee Training Program",
-      description: "Ontwikkeling van een trainingsprogramma voor medewerkers.",
-      client: "Global HR",
-      status: "Afgerond",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  const cases = casesData.cases;
+  const itemsPerPage = 4; // aantal cases per "slide"
+  const [page, setPage] = useState(0);
+
+  // Bereken hoeveel pagina's er zijn
+  const totalPages = Math.ceil(cases.length / itemsPerPage);
+
+  // Automatisch van pagina wisselen elke 10 seconden
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPage((prev) => (prev + 1) % totalPages);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [totalPages]);
+
+  // Huidige cases selecteren
+  const startIndex = page * itemsPerPage;
+  const visibleCases = cases.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="flex h-screen bg-gray-800">
+    <div className="flex h-screen bg-gray-900 text-white overflow-hidden">
       {/* Sidebar */}
       <SideBar className="h-full" />
 
       {/* Hoofdcontent */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="flex justify-center py-10">
-          <h1 className="tk-din-arabic text-[#95c11f] text-5xl font-bold">
-            Cases
-          </h1>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
-          {cases.map((caseItem, index) => (
-            <a
-              key={index}
-              href={`/cases/${caseItem.id}`} // link naar detailpagina
-              className="block bg-[#95c11f] rounded-lg shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-transform duration-200"
+      <div className="flex-1 flex flex-col p-10 relative overflow-hidden">
+        {/* Titel */}
+        <h1 className="text-6xl font-bold text-[#95c11f] tk-din-arabic text-center mb-10">
+          Cases
+        </h1>
+
+        {/* Slideshow grid */}
+        <div className="flex-1 flex justify-center items-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 w-full max-w-5xl"
             >
-              <h3 className="text-lg font-semibold text-white mb-1 tk-din-arabic truncate">
-                {caseItem.name}
-              </h3>
-              {caseItem.description && (
-                <p className="text-white text-sm mb-2 line-clamp-3 tk-din-arabic">
-                  {caseItem.description}
-                </p>
-              )}
-              {caseItem.type && (
-                <span className="inline-block bg-white/30 text-white text-xs px-2 py-1 rounded tk-din-arabic">
-                  {caseItem.type}
-                </span>
-              )}
-              {caseItem.image && (
-                <img src={caseItem.image} alt="Case image"></img>
-              )}
-            </a>
-          ))}
+              {visibleCases.map((caseItem) => (
+                <div
+                  key={caseItem.id}
+                  className="bg-[#95c11f] rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300"
+                >
+                  <img
+                    src={caseItem.image}
+                    alt={caseItem.name}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-2xl font-semibold text-white mb-2 tk-din-arabic">
+                    {caseItem.name}
+                  </h3>
+                  <p className="text-white text-sm mb-3 line-clamp-3 tk-din-arabic">
+                    {caseItem.description}
+                  </p>
+                  <p className="text-sm text-gray-200 tk-din-arabic">
+                    <strong>Klant:</strong> {caseItem.client}
+                  </p>
+                  <p
+                    className={`text-lg font-semibold mt-2 tk-din-arabic ${
+                      caseItem.status === "Afgerond"
+                        ? "text-green-200"
+                        : "text-yellow-200"
+                    }`}
+                  >
+                    {caseItem.status}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* Optionele voortgangsbalk */}
+        <motion.div
+          key={page}
+          className="absolute bottom-6 left-0 right-0 h-1 bg-[#95c11f]/30"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 10, ease: "linear" }}
+        />
       </div>
     </div>
   );

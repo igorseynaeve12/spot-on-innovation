@@ -7,6 +7,7 @@ import Playit from "./pages/Playit";
 import Case from "./pages/Case";
 import Calender from "./pages/Calender";
 import CaseTemplate from "./pages/cases/Case-Sjab";
+import SuccesStories from "./pages/SuccesStories";
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,10 @@ function App() {
           <Route path="/playit" element={<Playit />} />
           <Route path="/cases" element={<Case></Case>}></Route>
           <Route path="/kalender" element={<Calender></Calender>}></Route>
+          <Route
+            path="/succesverhalen"
+            element={<SuccesStories></SuccesStories>}
+          ></Route>
           <Route
             path="/cases/:id"
             element={<CaseTemplate></CaseTemplate>}
