@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import SideBar from "../components/SideBar";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -46,28 +47,10 @@ export default function Home() {
   ];
 
   // Sidebar items (niet gerelateerd aan bedrijven)
-  const sidebarItems = ["Home", "Succesverhalen", "Cases", "Kalender"];
 
   return (
     <div className="flex min-h-screen bg-gray-800">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-900 text-white flex flex-col py-6 px-4">
-        <h2 className="text-2xl font-bold mb-8 tk-din-arabic">Innovaties</h2>
-        {sidebarItems.map((item) => (
-          <div
-            key={item}
-            className="py-2 px-4 rounded hover:bg-gray-700 cursor-pointer transition tk-din-arabic"
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate(item.toLowerCase())}
-            onKeyDown={(e) =>
-              e.key === "Enter" && console.log(`${item} clicked`)
-            }
-          >
-            {item}
-          </div>
-        ))}
-      </aside>
+      <SideBar></SideBar>
 
       {/* Main content */}
       <motion.div
@@ -76,7 +59,7 @@ export default function Home() {
         animate={isDev ? {} : { opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="tk-din-arabic font-bold text-4xl md:text-6xl text-white text-center mb-10">
+        <h1 className="tk-din-arabic font-bold text-4xl md:text-6xl text-[#95c11f] text-center mb-10">
           Spot On Innovations
         </h1>
 
