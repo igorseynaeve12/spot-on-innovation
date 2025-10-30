@@ -56,13 +56,13 @@ const Calendar = () => {
   const upcomingEvents = events
     .filter((e) => new Date(e.date) >= today)
     .sort((a, b) => new Date(a.date) - new Date(b.date))
-    .slice(0, 8); // max 8 evenementen voor 1 scherm
+    .slice(0, 8);
 
   return (
-    <div className="flex bg-gray-900 h-screen">
+    <div className="flex bg-gray-900 min-h-screen">
       <SideBar className="h-full" />
 
-      <div className="flex-1 overflow-hidden py-10 px-8">
+      <div className="flex-1 overflow-auto py-10 px-6 sm:px-8">
         <h1 className="text-white tk-din-arabic font-bold text-5xl mb-12 text-center">
           Kalender
         </h1>
@@ -76,15 +76,19 @@ const Calendar = () => {
             const month = eventDate.toLocaleDateString("nl-NL", {
               month: "short",
             });
+            const dayName = eventDate.toLocaleDateString("nl-NL", {
+              weekday: "long",
+            });
 
             return (
               <div
                 key={event.id}
-                className="relative bg-gradient-to-br from-green-500 to-green-700 rounded-3xl shadow-2xl p-6 flex flex-col justify-between transform hover:scale-105 transition-transform duration-300"
+                className="relative bg-linear-to-r from-[#afd460] via-[#a2b764] to-[#7b9440] rounded-3xl shadow-2xl p-6 flex flex-col justify-between transform hover:scale-105 transition-transform duration-300"
               >
                 {/* Datum badge */}
                 <div className="absolute top-4 right-4 bg-white text-gray-900 px-3 py-1 rounded-xl font-bold text-lg tk-din-arabic shadow">
-                  {day} {month}
+                  {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
+                  {month}
                 </div>
 
                 {/* Event naam */}
@@ -96,11 +100,11 @@ const Calendar = () => {
                 <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
                   <span className="mr-2">🕒</span> {event.time}
                 </p>
-                <p className="text-white text-lg tk-din-arabic flex items-center">
+                <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
                   <span className="mr-2">📍</span> {event.location}
                 </p>
                 <p className="text-white text-lg tk-din-arabic flex items-center">
-                  <span className="mr-2"></span> {event.organisation}
+                  <span className="mr-2">🏢</span> {event.organisation}
                 </p>
               </div>
             );

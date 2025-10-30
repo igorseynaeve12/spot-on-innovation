@@ -1,91 +1,112 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import SideBar from "../components/SideBar";
+import companiesData from "../data/companies.json";
 
 export default function Home() {
-  const navigate = useNavigate();
+  const companies = companiesData.companies;
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  const isDev = true;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % companies.length);
+      setLoading(true);
+    }, 12000);
+    return () => clearInterval(interval);
+  }, [companies.length]);
 
-  const companies = [
-    {
-      name: "Squadron",
-      color: "bg-[#305984]",
-      route: "/squadron",
-      image: "/images/36199_squadron.png",
-    },
-    {
-      name: "Vintecc",
-      color: "bg-[#95c11f]",
-      route: "/vintecc",
-      image: "/images/vintecc_logo.png",
-    },
-    {
-      name: "Playit",
-      color: "bg-[#305984]",
-      route: "/playit",
-      image: "/images/Play-IT-Logo-website-1.jpg",
-    },
-    {
-      name: "Festo",
-      color: "bg-[#95c11f]",
-      route: "/festo",
-      image: "/images/Festo_logo.svg",
-    },
-    {
-      name: "24Flow",
-      color: "bg-[#305984]",
-      route: "/24flow",
-      image: "/images/24Flowlogo.png",
-    },
-    {
-      name: "Innoptus",
-      color: "bg-[#95c11f]",
-      route: "/innoptus",
-      image: "/images/innoptus-logo.jpeg",
-    },
-  ];
-
-  // Sidebar items (niet gerelateerd aan bedrijven)
+  const company = companies[index];
+  if (!company) return null;
 
   return (
-    <div className="flex min-h-screen bg-gray-800">
-      <SideBar></SideBar>
+    <div className="flex h-screen bg-gray-900 text-white overflow-hidden">
+      <SideBar className="h-full" />
 
-      {/* Main content */}
-      <motion.div
-        className="flex-1 flex flex-col items-center gap-10 pt-6 px-4 md:px-0 overflow-auto"
-        initial={isDev ? {} : { opacity: 0 }}
-        animate={isDev ? {} : { opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="tk-din-arabic font-bold text-4xl md:text-6xl text-[#95c11f] text-center mb-10">
-          Spot On Innovations
-        </h1>
+      <div className="flex-1 flex flex-col items-center justify-center relative px-20">
+        {/* Titel bovenaan */}
+        <motion.div className="absolute top-10 bg-white/25 p-6 rounded-xl shadow-xl w-full text-center">
+          <h1 className="text-5xl md:text-6xl tk-din-arabic font-extrabold tracking-wide pb-2">
+            {company.title}
+          </h1>
+          <p className="text-lg tk-din-arabic font-bold leading-relaxed text-white/90">
+            {company.description}
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 w-full max-w-6xl">
-          {companies.map((company) => (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={company.id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.8 }}
+            className={`flex flex-col md:flex-row items-start md:items-stretch justify-between gap-10 mt-48 w-full`}
+          >
+            {/* Linkerkant: Case info */}
             <motion.div
-              key={company.name}
-              className={`${company.color} flex items-center justify-center rounded-3xl shadow-2xl cursor-pointer hover:scale-105 transition-transform`}
-              style={{ aspectRatio: "4/3" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate(company.route)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && navigate(company.route)}
+              className="flex flex-col gap-6 max-w-md md:max-w-lg flex-shrink-0"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center justify-center overflow-hidden rounded-xl bg-white p-4 w-3/4 h-3/4">
-                <img
-                  src={company.image}
-                  alt={`${company.name} Logo`}
-                  className="max-w-full max-h-full object-contain"
-                />
+              <h2 className="text-3xl md:text-4xl font-bold tk-din-arabic">
+                {company.caseTitle}
+              </h2>
+              <p className="text-base tk-din-arabic md:text-lg text-white/80 leading-relaxed">
+                {company.caseDescription}
+              </p>
+
+              <motion.a
+                href={company.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.95 }}
+                className="tk-din-arabic bg-white text-blue-900 px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-md hover:scale-105 transition-transform w-max"
+              >
+                🌐 Bezoek website
+              </motion.a>
+            </motion.div>
+
+            {/* Rechterkant: Iframe full width */}
+            <motion.div
+              className={`flex-1 flex justify-center relative ${company.color} p-6 rounded-3xl shadow-2xl`}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {loading && (
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className="flex flex-col items-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-white mb-4"></div>
+                  </div>
+                </div>
+              )}
+
+              <div
+                className="overflow-hidden rounded-3xl shadow-2xl border-4 border-white/20 w-full"
+                style={{ height: "60vh" }}
+              >
+                <iframe
+                  src={company.iframeUrl}
+                  title={`${company.name} website`}
+                  className="w-full h-full border-0 rounded-3xl"
+                  onLoad={() => setLoading(false)}
+                ></iframe>
               </div>
             </motion.div>
-          ))}
-        </div>
-      </motion.div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Voortgangsbalk */}
+        <motion.div
+          key={index}
+          className="absolute bottom-6 left-10 right-10 h-1 bg-[#95c11f]/30 rounded"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 12, ease: "linear" }}
+        />
+      </div>
     </div>
   );
 }

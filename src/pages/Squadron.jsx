@@ -6,7 +6,7 @@ export default function Squadron() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen bg-gradient-to-r from-gray-800 to-gray-600 text-white gap-10"
+      className="flex flex-col min-h-screen bg-linear-to-r from-gray-800 to-gray-600 text-white gap-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

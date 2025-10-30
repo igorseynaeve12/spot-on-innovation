@@ -1,0 +1,76 @@
+{
+  "companies": [
+    {
+      "id": "squadron",
+      "name": "Squadron",
+      "color": "bg-[#305984]",
+      "title": "Squadron – Communications app",
+      "description": "Squadron ontwikkelt digitale communicatieoplossingen die bedrijven helpen om teams beter te verbinden, workflows te verbeteren en samenwerking te versnellen met gebruiksvriendelijke apps en dashboards.",
+      "caseTitle": "Case: Digitale communicatie verbeteren",
+      "caseDescription": "Een organisatie wilde de interne communicatie verbeteren en afstemmen op moderne werkmethodes. Squadron bouwde een gebruiksvriendelijke communicatie-app waarmee teams in real-time informatie kunnen delen, meldingen ontvangen en snel feedback kunnen geven. Zo werd de samenwerking merkbaar efficiënter.",
+      "website": "https://www.squadron.be",
+      "iframeUrl": "https://www.squadron.be",
+      "image": "/images/36199_squadron.png"
+    },
+    {
+      "id": "vintecc",
+      "name": "Vintecc",
+      "color": "bg-[#95c11f]",
+      "title": "Vintecc – Innovatieve software",
+      "description": "Vintecc ontwikkelt softwareoplossingen voor automatisering en data-analyse in de industrie.",
+      "caseTitle": "Case: Productie optimaliseren",
+      "caseDescription": "Vintecc implementeerde een realtime dashboard voor productie-efficiëntie, waardoor het management direct inzicht kreeg in bottlenecks en processen sneller kon bijsturen.",
+      "website": "https://www.vintecc.com/nl",
+      "iframeUrl": "https://www.vintecc.com/nl",
+      "image": "/images/vintecc_logo.png"
+    },
+    {
+      "id": "playit",
+      "name": "Playit",
+      "color": "bg-[#305984]",
+      "title": "Playit – Gaming platform",
+      "description": "Playit ontwikkelt innovatieve gamingplatforms die spelers en communities wereldwijd verbinden.",
+      "caseTitle": "Case: Multiplayer ervaring verbeteren",
+      "caseDescription": "Playit implementeerde een nieuwe serverarchitectuur en realtime matchmaking-systeem, waardoor spelers sneller verbonden worden en de game-ervaring aanzienlijk vloeiender is.",
+      "website": "https://playit.training/en",
+      "iframeUrl": "https://playit.training/en",
+      "image": "/images/Play-IT-Logo-website-1.jpg"
+    },
+    {
+      "id": "festo",
+      "name": "Festo",
+      "color": "bg-[#95c11f]",
+      "title": "Festo – Automatiseringsoplossingen",
+      "description": "Festo ontwikkelt high-tech automatiseringssystemen voor industriële toepassingen wereldwijd.",
+      "caseTitle": "Case: Automatisering van productielijnen",
+      "caseDescription": "Festo implementeerde robotica en slimme sensoren in de productielijn, waardoor de efficiëntie steeg en menselijke fouten sterk werden verminderd.",
+      "website": "https://www.festo.com/be/nl/",
+      "iframeUrl": "https://www.festo.com/be/nl/",
+      "image": "/images/Festo_logo.svg"
+    },
+    {
+      "id": "24flow",
+      "name": "24Flow",
+      "color": "bg-[#305984]",
+      "title": "24Flow – Logistieke software",
+      "description": "24Flow biedt innovatieve logistieke software voor supply chain optimalisatie.",
+      "caseTitle": "Case: Transport en planning optimaliseren",
+      "caseDescription": "24Flow ontwikkelde een dashboard en route-optimalisatie systeem waardoor transportkosten daalden en leveringen efficiënter werden uitgevoerd.",
+      "website": "https://24flow.eu/nl/",
+      "iframeUrl": "https://24flow.eu/nl/",
+      "image": "/images/24Flowlogo.png"
+    },
+    {
+      "id": "innoptus",
+      "name": "Innoptus",
+      "color": "bg-[#95c11f]",
+      "title": "Innoptus – Data-driven oplossingen",
+      "description": "Innoptus biedt data-analyse en business intelligence oplossingen om bedrijven inzicht te geven en beslissingen te ondersteunen.",
+      "caseTitle": "Case: Data-analyse verbeteren",
+      "caseDescription": "Innoptus implementeerde een BI-platform voor realtime dashboards, waardoor managers betere beslissingen konden nemen op basis van actuele data.",
+      "website": "https://www.innoptus.com",
+      "iframeUrl": "https://www.innoptus.com",
+      "image": "/images/innoptus-logo.jpeg"
+    }
+  ]
+}
