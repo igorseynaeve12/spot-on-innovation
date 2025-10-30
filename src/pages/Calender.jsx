@@ -7,6 +7,7 @@ const events = [
     date: "2025-10-25",
     time: "10:00 - 11:00",
     location: "Kantoor A",
+    organisation: "Hogeschool Vives",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const events = [
     date: "2025-12-26",
     time: "14:00 - 16:00",
     location: "Kantoor B",
+    organisation: "POM West-Vlaanderen",
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const events = [
     date: "2025-12-24",
     time: "19:00 - 20:30",
     location: "Auditorium",
+    organisation: "Howest",
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ const events = [
     date: "2025-11-28",
     time: "09:00 - 10:30",
     location: "Vergaderzaal 1",
+    organisation: "Hogeschool Vives",
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ const events = [
     date: "2025-12-1",
     time: "12:00 - 13:00",
     location: "Kantine",
+    organisation: "POM West-Vlaanderen",
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ const events = [
     date: "2025-11-1",
     time: "15:00 - 17:00",
     location: "Vergaderzaal 2",
+    organisation: "Hogeschool Vives",
   },
 ];
 
@@ -53,38 +59,52 @@ const Calendar = () => {
     .slice(0, 8); // max 8 evenementen voor 1 scherm
 
   return (
-    <div className="flex bg-gray-800 h-screen">
+    <div className="flex bg-gray-900 h-screen">
       <SideBar className="h-full" />
 
-      <div className="flex-1 overflow-hidden py-10 px-6">
-        <h1 className="text-white tk-din-arabic font-bold text-5xl mb-8 text-center">
+      <div className="flex-1 overflow-hidden py-10 px-8">
+        <h1 className="text-white tk-din-arabic font-bold text-5xl mb-12 text-center">
           Kalender
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {upcomingEvents.map((event) => (
-            <div
-              key={event.id}
-              className="bg-[#95c11f] rounded-lg shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-200"
-            >
-              <h3 className="text-2xl font-bold text-white mb-2 tk-din-arabic truncate">
-                {event.name}
-              </h3>
-              <p className="text-white text-lg mb-1 tk-din-arabic">
-                {new Date(event.date).toLocaleDateString("nl-NL", {
-                  weekday: "short",
-                  day: "numeric",
-                  month: "short",
-                })}
-              </p>
-              <p className="text-white text-lg mb-1 tk-din-arabic">
-                Tijd: {event.time}
-              </p>
-              <p className="text-white text-lg tk-din-arabic">
-                Locatie: {event.location}
-              </p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {upcomingEvents.map((event) => {
+            const eventDate = new Date(event.date);
+            const day = eventDate.toLocaleDateString("nl-NL", {
+              day: "numeric",
+            });
+            const month = eventDate.toLocaleDateString("nl-NL", {
+              month: "short",
+            });
+
+            return (
+              <div
+                key={event.id}
+                className="relative bg-gradient-to-br from-green-500 to-green-700 rounded-3xl shadow-2xl p-6 flex flex-col justify-between transform hover:scale-105 transition-transform duration-300"
+              >
+                {/* Datum badge */}
+                <div className="absolute top-4 right-4 bg-white text-gray-900 px-3 py-1 rounded-xl font-bold text-lg tk-din-arabic shadow">
+                  {day} {month}
+                </div>
+
+                {/* Event naam */}
+                <h3 className="text-2xl font-extrabold text-white mb-4 tk-din-arabic">
+                  {event.name}
+                </h3>
+
+                {/* Tijd & Locatie */}
+                <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
+                  <span className="mr-2">🕒</span> {event.time}
+                </p>
+                <p className="text-white text-lg tk-din-arabic flex items-center">
+                  <span className="mr-2">📍</span> {event.location}
+                </p>
+                <p className="text-white text-lg tk-din-arabic flex items-center">
+                  <span className="mr-2"></span> {event.organisation}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
