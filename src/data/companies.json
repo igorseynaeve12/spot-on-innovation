@@ -3,7 +3,7 @@
     {
       "id": "squadron",
       "name": "Squadron",
-      "color": "bg-[#305984]",
+      "color": "bg-[#552a87]",
       "title": "Squadron – Communications app",
       "description": "Squadron ontwikkelt digitale communicatieoplossingen die bedrijven helpen om teams beter te verbinden, workflows te verbeteren en samenwerking te versnellen met gebruiksvriendelijke apps en dashboards.",
       "caseTitle": "Case: Digitale communicatie verbeteren",
@@ -27,7 +27,7 @@
     {
       "id": "playit",
       "name": "Playit",
-      "color": "bg-[#305984]",
+      "color": "bg-[#552a87]",
       "title": "Playit – Gaming platform",
       "description": "Playit ontwikkelt innovatieve gamingplatforms die spelers en communities wereldwijd verbinden.",
       "caseTitle": "Case: Multiplayer ervaring verbeteren",
@@ -51,7 +51,7 @@
     {
       "id": "24flow",
       "name": "24Flow",
-      "color": "bg-[#305984]",
+      "color": "bg-[#552a87]",
       "title": "24Flow – Logistieke software",
       "description": "24Flow biedt innovatieve logistieke software voor supply chain optimalisatie.",
       "caseTitle": "Case: Transport en planning optimaliseren",

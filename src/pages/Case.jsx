@@ -24,7 +24,7 @@ export default function Case() {
   const visibleCases = cases.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white overflow-hidden">
+    <div className="flex h-screen bg-[#ffffff] text-[#48365c] overflow-hidden">
       {/* Sidebar */}
       <SideBar className="h-full" />
 
@@ -49,7 +49,7 @@ export default function Case() {
               {visibleCases.map((caseItem) => (
                 <div
                   key={caseItem.id}
-                  className="bg-[#95c11f] rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300"
+                  className="bg-[#552a87] rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300"
                 >
                   <img
                     src={caseItem.image}

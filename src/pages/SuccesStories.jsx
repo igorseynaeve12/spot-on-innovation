@@ -17,7 +17,7 @@ export default function SuccesStories() {
   const story = stories[index];
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white overflow-hidden">
+    <div className="flex h-screen bg-[#ffffff] text-[#48365c] overflow-hidden">
       <SideBar className="h-full" />
 
       <div className="flex-1 flex flex-col items-center justify-center relative px-20">
@@ -47,7 +47,7 @@ export default function SuccesStories() {
             </h2>
 
             {/* Beschrijving */}
-            <p className="text-xl text-gray-300 tk-din-arabic">
+            <p className="text-xl text-[#48365c] tk-din-arabic">
               {story.description}
             </p>
 

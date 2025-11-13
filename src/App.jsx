@@ -1,13 +1,11 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
-import Squadron from "./pages/Squadron";
-import Vintecc from "./pages/Vintecc";
-import Playit from "./pages/Playit";
 import Case from "./pages/Case";
 import Calender from "./pages/Calender";
 import CaseTemplate from "./pages/cases/Case-Sjab";
 import SuccesStories from "./pages/SuccesStories";
+import Demo from "./pages/Demo";
 
 function App() {
   const location = useLocation();
@@ -18,9 +16,6 @@ function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
-          <Route path="/squadron" element={<Squadron />} />
-          <Route path="/vintecc" element={<Vintecc />} />
-          <Route path="/playit" element={<Playit />} />
           <Route path="/cases" element={<Case></Case>}></Route>
           <Route path="/kalender" element={<Calender></Calender>}></Route>
           <Route
@@ -31,6 +26,7 @@ function App() {
             path="/cases/:id"
             element={<CaseTemplate></CaseTemplate>}
           ></Route>
+          <Route path="/labs & demo's" element={<Demo></Demo>}></Route>
         </Routes>
       </AnimatePresence>
     </>
