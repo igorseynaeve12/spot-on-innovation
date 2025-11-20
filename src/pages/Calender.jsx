@@ -4,7 +4,6 @@ import SideBar from "../components/SideBar";
 const SHEET_ID = "1iqv907ZQ6YWHlxl-dBQMhNBrjbwHOpmoTBNHpsGTF20";
 const SHEET_RANGE = "Sheet1"; // pas aan naar jouw tabbladnaam
 const GOOGLE_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-
 const Calendar = () => {
   const [events, setEvents] = useState([]);
   const today = new Date();
@@ -42,8 +41,8 @@ const Calendar = () => {
     <div className="flex bg-[#ffffff] min-h-screen">
       <SideBar className="h-full" />
 
-      <div className="flex-1 overflow-auto py-10 px-6 sm:px-8">
-        <h1 className="text-white tk-din-arabic font-bold text-5xl mb-12 text-center">
+      <div className="flex-1 p-4 2xl:ml-64">
+        <h1 className="text-black tk-din-arabic font-bold text-5xl mb-12 text-center">
           Kalender
         </h1>
 
@@ -61,34 +60,39 @@ const Calendar = () => {
             });
 
             return (
-              <div
+              <a
                 key={index}
-                className="relative bg-linear-to-r from-[#afd460] via-[#a2b764] to-[#7b9440] rounded-3xl shadow-2xl p-6 flex flex-col justify-between transform hover:scale-105 transition-transform duration-300"
+                href={event.URL || "#"} // vervang "URL" door jouw kolomnaam
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transform hover:scale-105 transition-transform duration-300"
               >
-                {/* Datum badge */}
-                <div className="absolute bottom-6 right-5 bg-white text-gray-900 px-3 py-1 rounded-xl font-bold text-lg tk-din-arabic shadow">
-                  {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
-                  {month}
+                <div className="relative bg-linear-to-r from-[#afd460] via-[#a2b764] to-[#7b9440] rounded-3xl shadow-2xl p-6 flex flex-col justify-between cursor-pointer">
+                  {/* Datum badge */}
+                  <div className="absolute bottom-6 right-5 bg-white text-gray-900 px-3 py-1 rounded-xl font-bold text-lg tk-din-arabic shadow">
+                    {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
+                    {month}
+                  </div>
+
+                  {/* Event naam */}
+                  <h3 className="text-2xl font-extrabold text-white mb-4 tk-din-arabic">
+                    {event.Eventtitel}
+                  </h3>
+
+                  {/* Tijd & Locatie */}
+                  <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
+                    <span className="mr-2">🕒</span>{" "}
+                    {event.Eventtype || "Tijd niet opgegeven"}
+                  </p>
+                  <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
+                    <span className="mr-2">📍</span>{" "}
+                    {event.Locatie || "Locatie niet opgegeven"}
+                  </p>
+                  <p className="text-white text-lg tk-din-arabic flex items-center">
+                    <span className="mr-2">🏢</span> {event.Organisator}
+                  </p>
                 </div>
-
-                {/* Event naam */}
-                <h3 className="text-2xl font-extrabold text-white mb-4 tk-din-arabic">
-                  {event.Eventtitel}
-                </h3>
-
-                {/* Tijd & Locatie */}
-                <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
-                  <span className="mr-2">🕒</span>{" "}
-                  {event.Eventtype || "Tijd niet opgegeven"}
-                </p>
-                <p className="text-white text-lg tk-din-arabic flex items-center mb-1">
-                  <span className="mr-2">📍</span>{" "}
-                  {event.Location || "Locatie niet opgegeven"}
-                </p>
-                <p className="text-white text-lg tk-din-arabic flex items-center">
-                  <span className="mr-2">🏢</span> {event.Organisator}
-                </p>
-              </div>
+              </a>
             );
           })}
         </div>

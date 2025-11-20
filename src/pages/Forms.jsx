@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyTHqiHpLEYhpTF8Xwo8RNHT4LjTf7WL_8FnX-LZSrPJC4i6WGkpUY0mDu52NbsLDJJ/exec";
+  "https://script.google.com/macros/s/AKfycbws9YN9oKPV-4ZgA6D503y0F0b8lxAm_AjIneLzpgysIyw7S9nETWLRPHIXQx7qVnRH/exec";
 
 export default function Forms() {
   const [formData, setFormData] = useState({
@@ -9,8 +9,10 @@ export default function Forms() {
     type: "",
     titel: "",
     organisator: "",
+    url: "",
+    location: "",
   });
-  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +32,8 @@ export default function Forms() {
         formattedDatum += ":00";
       }
 
-      const payload = { ...formData, datum: formattedDatum };
-
+      const payload = { ...formData, datum: "'" + formattedDatum };
+      setLoading(true);
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
@@ -39,8 +41,16 @@ export default function Forms() {
         body: JSON.stringify(payload),
       });
 
-      alert("✅ Verzonden! (kan 1-2s duren voor zichtbaar in Google Sheet)");
-      setFormData({ datum: "", type: "", titel: "", organisator: "" });
+      setLoading(false);
+
+      setFormData({
+        datum: "",
+        type: "",
+        titel: "",
+        organisator: "",
+        url: "",
+        location: "",
+      });
     } catch (err) {
       console.error(err);
       alert("❌ Fout bij verzenden");
@@ -85,17 +95,32 @@ export default function Forms() {
           onChange={handleChange}
           className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#552a87] outline-none"
         />
+        <input
+          type="text"
+          name="url"
+          placeholder="URL"
+          value={formData.url}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#552a87] outline-none"
+        />
+        <input
+          type="text"
+          name="location"
+          placeholder="Locatie"
+          value={formData.location}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#552a87] outline-none"
+        />
         <button
           type="submit"
-          className="bg-[#552a87] text-white w-full py-3 rounded-lg hover:bg-[#46206f] transition cursor-pointer"
+          disabled={loading}
+          className={`bg-[#552a87] text-white w-full py-3 rounded-lg hover:bg-[#46206f] transition cursor-pointer ${
+            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#46206f]"
+          }`}
         >
-          Versturen
+          {loading ? "Versturen..." : "Versturen"}
         </button>
       </form>
-
-      {status && (
-        <p className="text-center mt-4 text-[#552a87] font-medium">{status}</p>
-      )}
     </div>
   );
 }

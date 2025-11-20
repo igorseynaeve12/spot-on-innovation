@@ -7,6 +7,10 @@ import CaseTemplate from "./pages/cases/Case-Sjab";
 import SuccesStories from "./pages/SuccesStories";
 import Demo from "./pages/Demo";
 import Forms from "./pages/Forms";
+import LoginWrapper from "./pages/Login";
+import XiboCalender from "./pages/Xibo-Calender";
+import Overzicht from "./pages/Overzicht";
+import ProjectDetail from "./components/ProjectDetail";
 
 function App() {
   const location = useLocation();
@@ -29,6 +33,19 @@ function App() {
           ></Route>
           <Route path="/labs & demo's" element={<Demo></Demo>}></Route>
           <Route path="/forms" element={<Forms></Forms>}></Route>
+          <Route path="/login" element={<LoginWrapper></LoginWrapper>}></Route>
+          <Route
+            path="/xibo-calender"
+            element={<XiboCalender></XiboCalender>}
+          ></Route>
+          <Route
+            path="/overzicht projecten"
+            element={<Overzicht></Overzicht>}
+          ></Route>
+          <Route
+            path="/projecten/:id"
+            element={<ProjectDetail></ProjectDetail>}
+          ></Route>
         </Routes>
       </AnimatePresence>
     </>

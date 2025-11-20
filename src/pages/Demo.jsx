@@ -32,7 +32,7 @@ const Demo = () => {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col px-6 md:px-12 py-10 overflow-y-auto">
-        <h1 className="text-5xl md:text-6xl font-bold text-[#95c11f] text-center mb-10 tk-din-arabic">
+        <h1 className="text-5xl md:text-6xl font-bold text-[#48365c] text-center mb-10 tk-din-arabic">
           Labs & Demo's
         </h1>
 
