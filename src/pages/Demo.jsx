@@ -3,10 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import SideBar from "../components/SideBar";
 
 const videoList = [
-  { id: "JObkfDHl_j8", title: "Demo 1" },
-  { id: "69c1D5w4TA0", title: "Demo 2" },
-  { id: "VMYGkXuFQsI", title: "Demo 3" },
-  { id: "O2n3v-HujGc", title: "Demo 4" },
+  {
+    id: "JObkfDHl_j8",
+    title: "360° view Innovatielab The Ultimate Machine - Reverb Chamber",
+  },
+  {
+    id: "69c1D5w4TA0",
+    title: " 360° view Innovatielab The Ultimate Machine - Anechoic Chamber ",
+  },
+  {
+    id: "VMYGkXuFQsI",
+    title:
+      " 360° view - Innovationlab The Ultimate Machine - Machine vision for pick & place ",
+  },
+  {
+    id: "O2n3v-HujGc",
+    title: " 360° view Innovatielab The Ultimate Machine - HALT kamer ",
+  },
 ];
 
 const Demo = () => {
@@ -55,7 +68,7 @@ const Demo = () => {
               onClick={() => setActiveVideo(null)}
             >
               <motion.div
-                className="relative bg-[#552a87] rounded-3xl shadow-2xl overflow-hidden w-full max-w-4xl"
+                className="relative bg-[#552a87] rounded-3xl shadow-2xl overflow-hidden w-full max-w-7xl h-[80vh]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -65,7 +78,7 @@ const Demo = () => {
                 <iframe
                   src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=1&rel=0`}
                   title={activeVideo.title}
-                  className="w-full h-[70vh] border-0 rounded-3xl"
+                  className="w-full h-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>

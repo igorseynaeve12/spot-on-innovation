@@ -29,7 +29,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl tk-din-arabic font-extrabold tracking-wide pb-2">
             {company.title}
           </h1>
-          <p className="text-lg tk-din-arabic font-bold leading-relaxed text-[#95c11f]/90">
+          <p className="text-lg tk-din-arabic font-bold leading-relaxed text-[#48365c]/90">
             {company.description}
           </p>
         </motion.div>

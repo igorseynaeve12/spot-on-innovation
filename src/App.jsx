@@ -6,6 +6,7 @@ import Calender from "./pages/Calender";
 import CaseTemplate from "./pages/cases/Case-Sjab";
 import SuccesStories from "./pages/SuccesStories";
 import Demo from "./pages/Demo";
+import Forms from "./pages/Forms";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
             element={<CaseTemplate></CaseTemplate>}
           ></Route>
           <Route path="/labs & demo's" element={<Demo></Demo>}></Route>
+          <Route path="/forms" element={<Forms></Forms>}></Route>
         </Routes>
       </AnimatePresence>
     </>
