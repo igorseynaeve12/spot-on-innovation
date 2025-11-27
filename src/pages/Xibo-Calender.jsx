@@ -33,18 +33,48 @@ const XiboCalender = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 1000 * 60 * 5); // elke 5 minuten refresh
-
+    const interval = setInterval(fetchData, 1000 * 60 * 5);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="tk-din-arabic w-full h-full bg-transparent text-white flex flex-col items-center justify-start p-4 overflow-hidden">
-      <h1 className="text-5xl font-bold mb-8 text-center">
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "transparent",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        padding: "16px",
+        overflow: "hidden",
+        fontFamily: "din-arabic",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "48px",
+          fontWeight: "bold",
+          marginBottom: "32px",
+          textAlign: "center",
+        }}
+      >
         Aanstaande evenementen
       </h1>
 
-      <div className="flex flex-wrap justify-center items-stretch gap-6 w-full h-full">
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "stretch",
+          gap: "24px",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         {events.slice(0, 8).map((event, index) => {
           const eventDate = new Date(event.Datum);
           const day = eventDate.toLocaleDateString("nl-NL", { day: "numeric" });
@@ -58,20 +88,46 @@ const XiboCalender = () => {
           return (
             <div
               key={index}
-              className="flex flex-col justify-between text-center bg-[#222] rounded-2xl shadow-lg p-4"
               style={{
-                flex: "1 1 calc(25% - 24px)", // Max 4 per rij
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                textAlign: "center",
+                background: "#222",
+                borderRadius: "16px",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+                padding: "16px",
+                flex: "1 1 calc(25% - 24px)",
                 minWidth: "250px",
                 maxWidth: "350px",
                 minHeight: "200px",
+                fontSize: "16px",
               }}
             >
-              <h3 className="text-2xl font-bold leading-tight">
+              <h3
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  lineHeight: "1.2",
+                }}
+              >
                 {event.Eventtitel}
               </h3>
-              <p className="text-lg">📌 {event.Eventtype || "Type onbekend"}</p>
-              <p className="text-lg">🏢 {event.Organisator}</p>
-              <div className="mt-3 bg-[#444] text-white text-xl font-bold rounded-lg px-3 py-2">
+              <p style={{ fontSize: "18px" }}>
+                📌 {event.Eventtype || "Type onbekend"}
+              </p>
+              <p style={{ fontSize: "18px" }}>🏢 {event.Organisator}</p>
+              <div
+                style={{
+                  marginTop: "12px",
+                  background: "#444",
+                  color: "white",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  borderRadius: "8px",
+                  padding: "8px 12px",
+                }}
+              >
                 {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
                 {month}
               </div>

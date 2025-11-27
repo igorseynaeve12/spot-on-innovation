@@ -91,6 +91,9 @@ const Calendar = () => {
                   <p className="text-white text-lg tk-din-arabic flex items-center">
                     <span className="mr-2">🏢</span> {event.Organisator}
                   </p>
+                  <p className="underline text-white text-lg tk-din-arabic pt-5">
+                    Meer info
+                  </p>
                 </div>
               </a>
             );
