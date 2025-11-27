@@ -53,7 +53,7 @@ const LoginWrapper = () => {
           />
           <button
             type="submit"
-            className="bg-[#552a87] text-white w-full py-2 rounded-lg hover:bg-[#46206f] transition"
+            className="bg-[#552a87] text-white w-full py-2 rounded-lg hover:bg-[#46206f] transition cursor-pointer"
           >
             Inloggen
           </button>

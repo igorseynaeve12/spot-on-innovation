@@ -56,7 +56,7 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tk-din-arabic">
                 {company.caseTitle}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg tk-din-arabic text-[#6a8f00] leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg tk-din-arabic text-gray-600 leading-relaxed">
                 {company.caseDescription.split("\n").map((line, index) => (
                   <span key={index}>
                     {line}

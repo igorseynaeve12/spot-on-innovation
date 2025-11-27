@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
         <h2 className="text-2xl font-bold tk-din-arabic mb-2">
           {project.title}
         </h2>
-        <p className="text-[#6b8e23] mb-4 flex-1">{project.description}</p>
+        <p className="text-gray-600 mb-4 flex-1">{project.description}</p>
 
         {/* Button binnen dezelfde flex container */}
         <button

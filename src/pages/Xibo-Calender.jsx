@@ -39,11 +39,13 @@ const XiboCalender = () => {
   }, []);
 
   return (
-    <div className="tk-din-arabic w-full h-full flex flex-col items-center justify-center text-white p-10">
-      <h1 className="text-6xl font-bold mb-16">Aanstaande evenementen</h1>
+    <div className="tk-din-arabic w-full h-full bg-transparent text-white flex flex-col items-center justify-start p-4 overflow-hidden">
+      <h1 className="text-5xl font-bold mb-8 text-center">
+        Aanstaande evenementen
+      </h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-[2000px] w-full">
-        {events.map((event, index) => {
+      <div className="flex flex-wrap justify-center items-stretch gap-6 w-full h-full">
+        {events.slice(0, 8).map((event, index) => {
           const eventDate = new Date(event.Datum);
           const day = eventDate.toLocaleDateString("nl-NL", { day: "numeric" });
           const month = eventDate.toLocaleDateString("nl-NL", {
@@ -56,15 +58,20 @@ const XiboCalender = () => {
           return (
             <div
               key={index}
-              className="tk-din-arabic bg-transparent text-white p-8 rounded-3xl shadow-xl text-center flex flex-col justify-between min-h-[300px]"
+              className="flex flex-col justify-between text-center bg-[#222] rounded-2xl shadow-lg p-4"
+              style={{
+                flex: "1 1 calc(25% - 24px)", // Max 4 per rij
+                minWidth: "250px",
+                maxWidth: "350px",
+                minHeight: "200px",
+              }}
             >
-              <h3 className="text-4xl font-bold">{event.Eventtitel}</h3>
-              <p className="text-2xl mt-2">
-                📌 {event.Eventtype || "Type onbekend"}
-              </p>
-              <p className="text-xl mt-2">🏢 {event.Organisator}</p>
-
-              <div className="mt-6 bg-transparent text-white text-3xl font-bold rounded-xl px-4 py-2 mx-auto">
+              <h3 className="text-2xl font-bold leading-tight">
+                {event.Eventtitel}
+              </h3>
+              <p className="text-lg">📌 {event.Eventtype || "Type onbekend"}</p>
+              <p className="text-lg">🏢 {event.Organisator}</p>
+              <div className="mt-3 bg-[#444] text-white text-xl font-bold rounded-lg px-3 py-2">
                 {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
                 {month}
               </div>
