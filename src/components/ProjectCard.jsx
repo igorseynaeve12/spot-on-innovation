@@ -4,7 +4,7 @@ const ProjectCard = ({ project }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-100 rounded-3xl shadow-lg overflow-hidden hover:scale-105 transform transition duration-300 h-[300px]">
+    <div className="bg-gray-100 rounded-3xl shadow-lg overflow-hidden hover:scale-105 transform transition duration-300 h-full">
       {/* Container van de volledige kaart */}
       <div className="p-6 flex flex-col h-full">
         <h2 className="text-2xl font-bold tk-din-arabic mb-2">

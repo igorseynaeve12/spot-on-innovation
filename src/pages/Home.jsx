@@ -56,9 +56,15 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tk-din-arabic">
                 {company.caseTitle}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg tk-din-arabic text-[#95c11f]/80 leading-relaxed">
-                {company.caseDescription}
+              <p className="text-sm sm:text-base md:text-lg tk-din-arabic text-[#6a8f00] leading-relaxed">
+                {company.caseDescription.split("\n").map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </p>
+
               <motion.a
                 href={company.website}
                 target="_blank"
@@ -92,6 +98,7 @@ export default function Home() {
                   title={`${company.name} website`}
                   className="w-full h-full border-6 rounded-3xl"
                   onLoad={() => setLoading(false)}
+                  loading="eager"
                 />
               </div>
             </motion.div>

@@ -15,10 +15,25 @@ const ProjectDetail = () => {
 
       {/* Content rechts */}
       <div className="flex-1 p-8 mx-auto tk-din-arabic">
-        {/* Titel */}
-        <div className="py-10 text-[#48365c]">
-          <h1 className="text-5xl font-bold mb-6">{project.title}</h1>
-          <p className="text-lg mb-4">{project.description}</p>
+        <div className="flex flex-col lg:flex-row items-start gap-8 py-10 text-[#48365c]">
+          {/* Linkse kolom: Titel + beschrijving */}
+          <div className="flex-1">
+            <h1 className="text-5xl font-bold mb-6">{project.title}</h1>
+            <p className="text-lg mb-4">{project.description}</p>
+          </div>
+
+          {/* Rechtse kolom: Afbeelding */}
+          {project.image && (
+            <div className="flex-1 flex justify-end">
+              <div className="w-72 h-24 relative overflow-hidden rounded-xl">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Website knop */}
@@ -59,6 +74,7 @@ const ProjectDetail = () => {
                 src={project.iframeUrl}
                 className="w-full h-[60vh] border-0"
                 title={project.name}
+                loading="eager"
               ></iframe>
             </div>
           )}

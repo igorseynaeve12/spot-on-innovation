@@ -58,7 +58,7 @@ export default function Forms() {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-16 p-8 bg-white rounded-2xl shadow-xl">
+    <div className="max-w-lg mx-auto mt-16 p-8 bg-white rounded-2xl shadow-xl tk-din-arabic">
       <h2 className="text-3xl font-bold text-center mb-8 text-[#552a87]">
         Voeg nieuw event toe
       </h2>

@@ -20,6 +20,28 @@ const videoList = [
     id: "O2n3v-HujGc",
     title: " 360° view Innovatielab The Ultimate Machine - HALT kamer ",
   },
+  {
+    id: "9Mei7gLlf8s",
+    title: "360° view Innovatielab The Ultimate Factory",
+  },
+  {
+    id: "mAgaPoOm8ec",
+    title:
+      "360° view Applicatielab Smart Production & Assembly - Smart Assembly Line ",
+  },
+  {
+    id: "_lYBBssdUQU",
+    title:
+      "360° view Applicatielab Smart Production Organisation - Digital Twin",
+  },
+  {
+    id: "KIrnGRBRoJ8",
+    title: "360° view Technologielab Augmented & Virtual Reality",
+  },
+  {
+    id: "ya3J4cWXKaw",
+    title: "360° view Compilatievideo Machinebouw & Mechatronicalabs",
+  },
 ];
 
 const Demo = () => {

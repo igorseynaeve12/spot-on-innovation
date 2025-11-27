@@ -31,34 +31,38 @@ const LoginWrapper = () => {
   if (isLoggedIn) return <Forms></Forms>;
 
   return (
-    <div className="max-w-xs mx-auto mt-20 p-6 bg-white shadow-lg rounded-xl">
-      <h2 className="text-xl text-center font-semibold mb-4">Inloggen</h2>
-      <form onSubmit={handleLoginSubmit} className="space-y-3">
-        <input
-          type="text"
-          name="username"
-          placeholder="Gebruikersnaam"
-          onChange={handleLoginChange}
-          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#552a87]"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Wachtwoord"
-          onChange={handleLoginChange}
-          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#552a87]"
-        />
-        <button
-          type="submit"
-          className="bg-[#552a87] text-white w-full py-2 rounded-lg hover:bg-[#46206f] transition"
-        >
+    <div className="flex items-center justify-center">
+      <div className="tk-din-arabic max-w-xs mx-auto mt-20 p-6 bg-white shadow-lg rounded-xl">
+        <h2 className="tk-din-arabic text-3xl text-center font-semibold mb-4">
           Inloggen
-        </button>
-      </form>
+        </h2>
+        <form onSubmit={handleLoginSubmit} className="space-y-3">
+          <input
+            type="text"
+            name="username"
+            placeholder="Gebruikersnaam"
+            onChange={handleLoginChange}
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#552a87]"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Wachtwoord"
+            onChange={handleLoginChange}
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-[#552a87]"
+          />
+          <button
+            type="submit"
+            className="bg-[#552a87] text-white w-full py-2 rounded-lg hover:bg-[#46206f] transition"
+          >
+            Inloggen
+          </button>
+        </form>
 
-      {error && (
-        <p className="text-red-600 text-center font-medium mt-2">{error}</p>
-      )}
+        {error && (
+          <p className="text-red-600 text-center font-medium mt-2">{error}</p>
+        )}
+      </div>
     </div>
   );
 };
