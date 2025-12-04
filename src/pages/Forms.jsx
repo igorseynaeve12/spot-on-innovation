@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbws9YN9oKPV-4ZgA6D503y0F0b8lxAm_AjIneLzpgysIyw7S9nETWLRPHIXQx7qVnRH/exec";
+  "https://script.google.com/macros/s/AKfycby3OwLc0RTNlXAS7Dmbj8suzoFIBImgOKxGmJHefMwvegtppuAl8rE4HsS9Aq8zgi-9eg/exec";
 
 export default function Forms() {
   const [formData, setFormData] = useState({
