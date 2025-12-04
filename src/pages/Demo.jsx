@@ -53,7 +53,7 @@ const Demo = () => {
       <SideBar className="h-full" />
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col px-6 md:px-12 py-10 overflow-y-auto">
+      <div className="flex-1 flex flex-col px-6 md:px-12 py-10 overflow-y-auto pt-24">
         <h1 className="text-5xl md:text-6xl font-bold text-[#48365c] text-center mb-10 tk-din-arabic">
           Labs & Demo's
         </h1>

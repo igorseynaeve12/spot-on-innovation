@@ -11,7 +11,7 @@ export default function ProjectsOverview() {
       <SideBar />
 
       {/* Content */}
-      <div className="flex-1 p-6 lg:p-12 overflow-auto">
+      <div className="flex-1 p-6 lg:p-12 overflow-auto pt-24">
         <h1 className="text-4xl lg:text-5xl font-bold tk-din-arabic text-center mb-12">
           Overzicht projecten
         </h1>

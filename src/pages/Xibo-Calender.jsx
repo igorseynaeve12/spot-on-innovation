@@ -64,14 +64,13 @@ const XiboCalender = () => {
 
       <div
         style={{
-          display: "grid",
-          width: "100%",
-          maxWidth: "1800px", // <- voorkomt te brede layout
-          margin: "0 auto",
-          gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: "24px",
-          justifyItems: "center", // <- centreren van kaarten
-          alignItems: "start",
+          width: "100%",
+          maxWidth: "1800px",
+          margin: "0 auto",
           paddingBottom: "4vh",
         }}
       >
@@ -93,15 +92,13 @@ const XiboCalender = () => {
                 borderRadius: "16px",
                 boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
                 padding: "16px",
-                margin: "20px",
-                width: "100%",
-                maxWidth: "320px", // <- voorkomt dat kaarten te breed worden
-                minWidth: "240px", // <- blijft altijd mooi leesbaar
+                width: "260px",
+                minHeight: "220px",
+                margin: "12px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 textAlign: "center",
-                minHeight: "220px",
               }}
             >
               <h3

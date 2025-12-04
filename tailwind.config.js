@@ -5,8 +5,23 @@ module.exports = {
     extend: {
       fontFamily: {
         din: ['"din-arabic"', 'sans-serif'],
-      } 
+      },
+      keyframes: {
+        borderRun: {
+          "0%": { 
+            "stroke-dashoffset": "1000" 
+          },
+          "100%": { 
+            "stroke-dashoffset": "0" 
+          }
+        }
+      },
+      animation: {
+        borderRun: "borderRun 3s linear infinite",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ],
 };

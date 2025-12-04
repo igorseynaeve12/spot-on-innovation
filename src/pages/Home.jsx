@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SideBar from "../components/SideBar";
 import companiesData from "../data/companies.json";
+import CompanyDescription from "../components/CompanyDescription";
 
 export default function Home() {
   const companies = companiesData.companies;
@@ -20,7 +21,7 @@ export default function Home() {
   if (!company) return null;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-[#ffffff] text-[#48365c] overflow-auto">
+    <div className="flex flex-col lg:flex-row h-screen bg-[#ffffff] text-[#48365c] overflow-auto px-4 lg:px-10 py-4 lg:py-6">
       {/* Sidebar */}
 
       <SideBar />
@@ -29,10 +30,10 @@ export default function Home() {
       <div className="flex-1 flex flex-col items-center justify-evenly px-4 lg:px-10 py-2 lg:py-6">
         {/* Titel */}
         <motion.div className="py-0 lg:py-2">
-          <h1 className="text-3xl sm:text-5xl tk-din-arabic font-extrabold pb-2 text-center lg:text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl tk-din-arabic font-extrabold pb-2 text-center lg:text-left">
             {company.title}
           </h1>
-          <p className="text-sm sm:text-lg tk-din-arabic font-bold leading-relaxed text-[#48365c]/90 text-center lg:text-left">
+          <p className="text-xs sm:text-sm md:text-lg tk-din-arabic font-bold leading-relaxed text-[#48365c]/90 text-center lg:text-left">
             {company.description}
           </p>
         </motion.div>
@@ -56,14 +57,7 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tk-din-arabic">
                 {company.caseTitle}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg tk-din-arabic text-gray-600 leading-relaxed">
-                {company.caseDescription.split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </p>
+              <CompanyDescription text={company.caseDescription} />
 
               <motion.a
                 href={company.website}
@@ -90,8 +84,8 @@ export default function Home() {
               )}
 
               <div
-                className="overflow-hidden rounded-3xl border-4 border-white/20 w-full"
-                style={{ aspectRatio: "16/9", minHeight: "300px" }}
+                className="overflow-hidden rounded-3xl border-4 border-white/20 w-full max-w-full lg:max-w-[800px]"
+                style={{ aspectRatio: "16/9", minHeight: "200px" }}
               >
                 <iframe
                   src={company.iframeUrl}
