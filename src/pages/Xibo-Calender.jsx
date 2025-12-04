@@ -47,17 +47,15 @@ const XiboCalender = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "flex-start",
-        padding: "16px",
-        overflow: "hidden",
+        padding: "2vh",
         fontFamily: "din-arabic",
       }}
     >
       <h1
         style={{
-          fontSize: "48px",
+          fontSize: "clamp(24px, 4vw, 64px)",
           fontWeight: "bold",
-          marginBottom: "32px",
+          marginBottom: "3vh",
           textAlign: "center",
         }}
       >
@@ -66,16 +64,18 @@ const XiboCalender = () => {
 
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "stretch",
-          gap: "24px",
+          display: "grid",
           width: "100%",
-          height: "100%",
+          maxWidth: "1800px", // <- voorkomt te brede layout
+          margin: "0 auto",
+          gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+          gap: "24px",
+          justifyItems: "center", // <- centreren van kaarten
+          alignItems: "start",
+          paddingBottom: "4vh",
         }}
       >
-        {events.slice(0, 8).map((event, index) => {
+        {events.map((event, index) => {
           const eventDate = new Date(event.Datum);
           const day = eventDate.toLocaleDateString("nl-NL", { day: "numeric" });
           const month = eventDate.toLocaleDateString("nl-NL", {
@@ -89,43 +89,53 @@ const XiboCalender = () => {
             <div
               key={index}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                textAlign: "center",
                 background: "#222",
                 borderRadius: "16px",
                 boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
                 padding: "16px",
-                flex: "1 1 calc(25% - 24px)",
-                minWidth: "250px",
-                maxWidth: "350px",
-                minHeight: "200px",
-                fontSize: "16px",
+                margin: "20px",
+                width: "100%",
+                maxWidth: "320px", // <- voorkomt dat kaarten te breed worden
+                minWidth: "240px", // <- blijft altijd mooi leesbaar
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                textAlign: "center",
+                minHeight: "220px",
               }}
             >
               <h3
                 style={{
-                  fontSize: "24px",
+                  fontSize: "clamp(14px, 1.4vw, 22px)",
                   fontWeight: "bold",
                   lineHeight: "1.2",
                 }}
               >
                 {event.Eventtitel}
               </h3>
-              <p style={{ fontSize: "18px" }}>
+
+              <p
+                style={{
+                  fontSize: "clamp(12px, 1vw, 18px)",
+                  paddingTop: "15px",
+                }}
+              >
                 📌 {event.Eventtype || "Type onbekend"}
               </p>
-              <p style={{ fontSize: "18px" }}>🏢 {event.Organisator}</p>
+
+              <p style={{ fontSize: "clamp(12px, 1vw, 18px)" }}>
+                🏢 {event.Organisator}
+              </p>
+
               <div
                 style={{
                   marginTop: "12px",
                   background: "#444",
                   color: "white",
-                  fontSize: "20px",
+                  fontSize: "clamp(14px, 1.2vw, 20px)",
                   fontWeight: "bold",
                   borderRadius: "8px",
-                  padding: "8px 12px",
+                  padding: "6px 10px",
                 }}
               >
                 {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}
