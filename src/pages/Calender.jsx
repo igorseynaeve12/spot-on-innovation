@@ -67,7 +67,7 @@ const Calendar = () => {
                 rel="noopener noreferrer"
                 className="block transform hover:scale-105 transition-transform duration-300"
               >
-                <div className="relative bg-linear-to-r animate-borderRun from-[#2f233f] via-[#48365c] to-[#6a4c85] rounded-3xl shadow-2xl p-6 flex flex-col justify-between cursor-pointer h-full">
+                <div className="relative bg-[#2f233f] rounded-3xl shadow-2xl p-6 flex flex-col justify-between cursor-pointer h-full">
                   {/* Datum badge */}
                   <div className="absolute bottom-6 right-5 bg-white text-gray-900 px-3 py-1 rounded-xl font-bold text-lg tk-din-arabic shadow">
                     {dayName.charAt(0).toUpperCase() + dayName.slice(1)} {day}{" "}

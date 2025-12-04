@@ -72,6 +72,8 @@ const XiboCalender = () => {
           maxWidth: "1800px",
           margin: "0 auto",
           paddingBottom: "4vh",
+          maxHeight: "80vh", // vaste hoogte
+          overflowY: "auto", // scroll als er te veel zijn
         }}
       >
         {events.map((event, index) => {
@@ -86,13 +88,14 @@ const XiboCalender = () => {
 
           return (
             <div
-              key={index}
               style={{
                 background: "#222",
                 borderRadius: "16px",
                 boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
                 padding: "16px",
-                width: "260px",
+                flex: "1 1 250px", // flex-grow, flex-shrink, basis
+                maxWidth: "300px", // limiet op grote schermen
+                minWidth: "220px", // limiet op kleine schermen
                 minHeight: "220px",
                 margin: "12px",
                 display: "flex",
